@@ -1,6 +1,5 @@
 package com.electricity.seller.utils;
 
-import com.electricity.seller.models.Meter;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.hasProperty;
@@ -13,6 +12,7 @@ public class APICustomResponseTest {
         APICustomResponse response= new APICustomResponse();
         assertThat(response, hasProperty("status"));
         assertThat(response, hasProperty("message"));
+        assertThat(response, hasProperty("data"));
     }
 
 }
