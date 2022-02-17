@@ -17,9 +17,6 @@ public class ETokenStatusTest {
             ETokenStatusTestHasRequiredValues = true;
         }
 
-        System.out.println(values[0]);
-        System.out.println(values[1]);
-
         assertEquals(true, ETokenStatusTestHasRequiredValues, "EToken Status should have USED and NOTUSED as Values");
     }
 }
