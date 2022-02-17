@@ -30,7 +30,7 @@ public class MeterRepositoryTest {
 
         // When
          Meter savedMeter = underTest.save(meter);
-         assertThat(savedMeter).isEqualToComparingFieldByField(meter);
+         assertThat(savedMeter.getMeterNumber()).isEqualTo(meter.getMeterNumber());
 
     }
 
