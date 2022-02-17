@@ -13,6 +13,7 @@ import javax.validation.constraints.Min;
 public class Meter {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
