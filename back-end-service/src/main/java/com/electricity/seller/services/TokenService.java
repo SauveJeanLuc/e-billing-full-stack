@@ -39,8 +39,6 @@ public class TokenService {
             throw new CustomException("Meter number is not found", HttpStatus.BAD_REQUEST);
         }
 
-        //TODO: Validate Money (Multiple of 100 and not less than 100)
-
         if((dto.getAmountOfMoney() % 100 != 0) || (dto.getAmountOfMoney() < 100) || (dto.getAmountOfMoney() > 182500 )){
             throw new CustomException("invalid amount, only\n" +
                     "multiples of 100 not greater than 182,500 is accepted", HttpStatus.BAD_REQUEST);
