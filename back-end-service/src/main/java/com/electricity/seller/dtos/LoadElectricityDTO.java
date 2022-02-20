@@ -11,4 +11,6 @@ public class LoadElectricityDTO {
 
     private Integer token;
 
+    private Integer meterNumber;
+
 }
