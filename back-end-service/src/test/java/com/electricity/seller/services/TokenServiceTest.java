@@ -77,7 +77,7 @@ public class TokenServiceTest {
         LoadElectricityDTO dto = new LoadElectricityDTO(tokenValue, meterNumber);
 
         Long id = 132l;
-        Meter meter = new Meter(id, meterNumber, 0);
+        Meter meter = new Meter(id, meterNumber, 10);
 
         Token token = new Token();
         token.setValue(12345678);
@@ -91,6 +91,7 @@ public class TokenServiceTest {
         when(meterRepository.findByMeterNumber(any(Integer.class))).thenReturn(Optional.of(meter));
         token.setStatus(ETokenStatus.USED);
         when(tokenRepository.save(any(Token.class))).thenReturn(token);
-        assertEquals(20,underTest.loadElectricity(dto));
+        when(meterRepository.save(any(Meter.class))).thenReturn(meter);
+        assertEquals(30,underTest.loadElectricity(dto).getDaysRemaining());
     }
 }
