@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
@@ -22,7 +23,7 @@ public class TokenService {
     private final IMeterRepository meterRepository;
 
     @Autowired
-    public TokenService(@Lazy ITokenRepository tokenRepository, @Lazy IMeterRepository meterRepository){
+    public TokenService(ITokenRepository tokenRepository, IMeterRepository meterRepository){
         this.tokenRepository = tokenRepository;
         this.meterRepository = meterRepository;
     }
@@ -35,7 +36,7 @@ public class TokenService {
 
         //Validate Meter Number (Does not Exist)
         Optional<Meter> foundMeter = meterRepository.findByMeterNumber(dto.getMeterNumber());
-        if(foundMeter.isEmpty()){
+        if(!foundMeter.isPresent()){
             throw new CustomException("Meter number is not found", HttpStatus.BAD_REQUEST);
         }
 
@@ -70,6 +71,10 @@ public class TokenService {
 
         return tokenRepository.save(generatedToken);
 
+    }
+
+    public List<Token> getAll(){
+        return tokenRepository.findAll();
     }
 
 }
