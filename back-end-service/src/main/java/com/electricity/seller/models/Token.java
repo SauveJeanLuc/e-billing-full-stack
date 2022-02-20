@@ -23,8 +23,8 @@ public class Token {
     @Column(name = "id")
     private Long id;
 
-    @Max(8)
-    @Min(8)
+    @Max(99999999)
+    @Min(10000000)
     @Column(name = "value", nullable = false, unique = true)
     private Integer value;
 
