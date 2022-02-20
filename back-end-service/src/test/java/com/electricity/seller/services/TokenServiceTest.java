@@ -1,6 +1,7 @@
 package com.electricity.seller.services;
 
 import com.electricity.seller.dtos.BuyElectricityDTO;
+import com.electricity.seller.dtos.LoadElectricityDTO;
 import com.electricity.seller.enums.ETokenStatus;
 import com.electricity.seller.exceptions.CustomException;
 import com.electricity.seller.models.Meter;
@@ -51,13 +52,13 @@ public class TokenServiceTest {
         token.setMeter(meter);
         token.setStatus(ETokenStatus.USED);
 
-        tokenRepository.save(token);
-
         when(tokenRepository.save(any(Token.class))).thenReturn(token);
         when(meterRepository.findByMeterNumber(any(Integer.class))).thenReturn(Optional.of(meter));
         assertEquals(20,underTest.generateToken(dto).getDuration());
 
     }
+
+
 
     @Test
     public void itShouldNotSaveWhenMeterNumberIsInvalid(){
@@ -67,5 +68,28 @@ public class TokenServiceTest {
     @Test
     public void itShouldNotSaveWhenAmountOfMoneyIsInvalid(){
 
+    }
+
+    @Test
+    public void itShouldLoadElectricitySuccessfully() throws CustomException {
+        Integer tokenValue = 12345687;
+        LoadElectricityDTO dto = new LoadElectricityDTO(tokenValue);
+
+        Integer meterNumber = 123456;
+        Long id = 132l;
+        Meter meter = new Meter(id, meterNumber);
+
+        Token token = new Token();
+        token.setValue(12345678);
+        token.setAmountPayed(2000);
+        token.setDuration(20);
+        token.setMeter(meter);
+        token.setStatus(ETokenStatus.ACTIVE);
+
+        when(tokenRepository.findByValue(any(Integer.class))).thenReturn(Optional.of(token));
+        when(tokenRepository.existsByValueAndStatus(any(Integer.class),any(ETokenStatus.class))).thenReturn(false);
+        token.setStatus(ETokenStatus.USED);
+        when(tokenRepository.save(any(Token.class))).thenReturn(token);
+        assertEquals(20,underTest.loadElectricity(dto));
     }
 }
