@@ -26,7 +26,7 @@ public class TokenRepositoryTest {
     void itShouldSaveToken() {
         // Given
         Long id = 132l;
-        Meter meter = new Meter(id, 123456);
+        Meter meter = new Meter(id, 123456, 0);
         Token token = new Token();
         token.setValue(12345678);
         token.setAmountPayed(200);
