@@ -24,7 +24,7 @@ public class MeterRepositoryTest {
     void itShouldSaveMeter() {
         // Given
         Long id = 132l;
-        Meter meter = new Meter(id, 123456);
+        Meter meter = new Meter(id, 123456, 0);
 
         // When
          Meter savedMeter = underTest.save(meter);
