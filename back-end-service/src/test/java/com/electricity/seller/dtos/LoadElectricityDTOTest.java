@@ -11,6 +11,7 @@ public class LoadElectricityDTOTest {
     public void testLoadElectricityDTOHasImportantProperties(){
         LoadElectricityDTO dto = new LoadElectricityDTO();
         assertThat(dto, hasProperty("token"));
+        assertThat(dto, hasProperty("meterNumber"));
     }
 
 }
