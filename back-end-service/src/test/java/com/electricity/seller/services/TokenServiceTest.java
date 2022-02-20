@@ -44,7 +44,7 @@ public class TokenServiceTest {
         BuyElectricityDTO dto = new BuyElectricityDTO(amountOfMoney,meterNumber);
 
         Long id = 132l;
-        Meter meter = new Meter(id, meterNumber);
+        Meter meter = new Meter(id, meterNumber, 0);
         Token token = new Token();
         token.setValue(12345678);
         token.setAmountPayed(2000);
@@ -73,11 +73,11 @@ public class TokenServiceTest {
     @Test
     public void itShouldLoadElectricitySuccessfully() throws CustomException {
         Integer tokenValue = 12345687;
-        LoadElectricityDTO dto = new LoadElectricityDTO(tokenValue);
-
         Integer meterNumber = 123456;
+        LoadElectricityDTO dto = new LoadElectricityDTO(tokenValue, meterNumber);
+
         Long id = 132l;
-        Meter meter = new Meter(id, meterNumber);
+        Meter meter = new Meter(id, meterNumber, 0);
 
         Token token = new Token();
         token.setValue(12345678);
@@ -88,6 +88,7 @@ public class TokenServiceTest {
 
         when(tokenRepository.findByValue(any(Integer.class))).thenReturn(Optional.of(token));
         when(tokenRepository.existsByValueAndStatus(any(Integer.class),any(ETokenStatus.class))).thenReturn(false);
+        when(meterRepository.findByMeterNumber(any(Integer.class))).thenReturn(Optional.of(meter));
         token.setStatus(ETokenStatus.USED);
         when(tokenRepository.save(any(Token.class))).thenReturn(token);
         assertEquals(20,underTest.loadElectricity(dto));
