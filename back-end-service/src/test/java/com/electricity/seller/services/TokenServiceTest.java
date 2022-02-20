@@ -10,6 +10,9 @@ import com.electricity.seller.repositories.ITokenRepository;
 import org.junit.Before;
 import org.mockito.*;
 import org.junit.Test;
+
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
@@ -23,6 +26,9 @@ public class TokenServiceTest {
     @Mock
     private ITokenRepository tokenRepository;
 
+    @Mock
+    private IMeterRepository meterRepository;
+
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
@@ -32,12 +38,12 @@ public class TokenServiceTest {
     @Test
     public void itShouldGenerateTokenSuccessfully() throws CustomException {
         Integer amountOfMoney = 2000;
-        Integer meterNumber = 12345678;
+        Integer meterNumber = 123456;
 
         BuyElectricityDTO dto = new BuyElectricityDTO(amountOfMoney,meterNumber);
 
         Long id = 132l;
-        Meter meter = new Meter(id, 12345678);
+        Meter meter = new Meter(id, meterNumber);
         Token token = new Token();
         token.setValue(12345678);
         token.setAmountPayed(2000);
@@ -48,6 +54,7 @@ public class TokenServiceTest {
         tokenRepository.save(token);
 
         when(tokenRepository.save(any(Token.class))).thenReturn(token);
+        when(meterRepository.findByMeterNumber(any(Integer.class))).thenReturn(Optional.of(meter));
         assertEquals(20,underTest.generateToken(dto).getDuration());
 
     }
