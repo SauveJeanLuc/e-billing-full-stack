@@ -6,6 +6,7 @@ import com.electricity.seller.enums.ETokenStatus;
 import com.electricity.seller.exceptions.CustomException;
 import com.electricity.seller.models.Meter;
 import com.electricity.seller.models.Token;
+import com.electricity.seller.payload.LoadElectricityResponse;
 import com.electricity.seller.repositories.IMeterRepository;
 import com.electricity.seller.repositories.ITokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +71,7 @@ public class TokenService {
 
     }
 
-    public Integer loadElectricity(LoadElectricityDTO dto) throws CustomException{
+    public LoadElectricityResponse loadElectricity(LoadElectricityDTO dto) throws CustomException{
         /* ***** Start Token Validation ****** */
 
         //Validate Token (Size)
@@ -117,13 +118,18 @@ public class TokenService {
         foundToken.get().setStatus(ETokenStatus.USED);
 
         //Update Meter
-        meterRepository.save(foundMeter.get());
+        Meter updatedMeter = meterRepository.save(foundMeter.get());
 
         //Update Token
         tokenRepository.save(foundToken.get());
 
-        //Return Duration
-        return foundToken.get().getDuration();
+        //Return Response
+        LoadElectricityResponse response = new LoadElectricityResponse();
+        response.setDaysAdded(foundToken.get().getDuration());
+        response.setDaysRemaining(updatedMeter.getRemainingDays());
+
+        return response;
+
 
     }
 
