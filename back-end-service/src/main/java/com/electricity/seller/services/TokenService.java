@@ -29,6 +29,8 @@ public class TokenService {
         this.meterRepository = meterRepository;
     }
 
+    //TODO: Take Meter and Token Validations in separate functions.
+
     public Token generateToken(BuyElectricityDTO dto) throws CustomException {
         //Validate Meter Number (Size)
         if(String.valueOf(dto.getMeterNumber()).length() != 6){
@@ -130,6 +132,9 @@ public class TokenService {
 
         return response;
 
+    }
+
+    public Integer getRemainingDays() throws CustomException{
 
     }
 
