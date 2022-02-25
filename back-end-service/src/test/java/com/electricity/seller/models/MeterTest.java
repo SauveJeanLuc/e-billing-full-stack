@@ -12,6 +12,7 @@ public class MeterTest {
         Meter meter = new Meter();
         assertThat(meter, hasProperty("id"));
         assertThat(meter, hasProperty("meterNumber"));
+        assertThat(meter, hasProperty("remainingDays"));
     }
 
 }

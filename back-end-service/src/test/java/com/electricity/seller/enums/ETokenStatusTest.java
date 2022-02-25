@@ -9,7 +9,7 @@ public class ETokenStatusTest {
     public void testEnumValues(){
         boolean ETokenStatusTestHasRequiredValues = false;
         String expectedValue1 = "USED";
-        String expectedValue2 = "NOTUSED";
+        String expectedValue2 = "ACTIVE";
 
         ETokenStatus values[] = ETokenStatus.values();
 

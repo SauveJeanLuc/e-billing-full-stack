@@ -17,11 +17,13 @@ public class Meter {
     @Column(name = "id")
     private Long id;
 
-
-    @Max(6)
-    @Min(6)
+    @Max(999999)
+    @Min(100000)
     @Column(name = "meter_number", nullable = false, unique = true)
     private Integer meterNumber;
+
+    @Column(name = "remaining_days", nullable = false, unique = true)
+    private Integer remainingDays;
 
 }
 
