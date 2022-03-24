@@ -22,7 +22,7 @@ public class Meter {
     @Column(name = "meter_number", nullable = false, unique = true)
     private Integer meterNumber;
 
-    @Column(name = "remaining_days", nullable = false, unique = true)
+    @Column(name = "remaining_days", nullable = true, unique = true)
     private Integer remainingDays;
 
 }
