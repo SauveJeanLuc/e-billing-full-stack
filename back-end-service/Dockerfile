@@ -18,5 +18,5 @@ COPY target/back-end-service-0.0.1-SNAPSHOT.jar /usr/app/
 COPY . .
 RUN sh -c 'touch back-end-service-0.0.1-SNAPSHOT.jar'
 
-EXPOSE 8090
+EXPOSE 8080
 ENTRYPOINT ["java","-jar","back-end-service-0.0.1-SNAPSHOT.jar"]
