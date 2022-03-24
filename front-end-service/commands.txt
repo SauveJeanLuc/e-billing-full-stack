@@ -1,0 +1,4 @@
+service docker restart
+docker build -t sauvejeanluc/ebilling-front-end-service . 
+docker run -p 127.0.0.1:3000:3003 sauvejeanluc/ebilling-front-end-service
+docker build . -t sauvejeanluc/ebilling-front-end-service

@@ -1,0 +1,19 @@
+version: '2'
+services:
+  server:
+    build:
+      context: ./back-end-service/
+    command: java -jar back-end-service-0.0.1-SNAPSHOT.jar
+    ports:
+      - "8089:8080"
+  client:
+    build:
+      context: ./front-end-service/
+    command: npm start
+    volumes:
+      - ./front-end-service/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - server
+    ports:
+      - "3002:3000"
