@@ -39,10 +39,6 @@ public class TokenController {
         return ResponseEntity.status(HttpStatus.OK).body(new APICustomResponse(true, "Tokens retrieved successfully", tokenService.getAll()));
     }
 
-    @GetMapping("/all")
-    public List<Token> getAllList(){
-        return tokenService.getAll();
-    }
 
     @GetMapping()
     public String greatUser(){
