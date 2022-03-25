@@ -1,16 +1,18 @@
 version: '2'
 services:
   server:
+    image: "sauvejeanluc/ebilling-back-end-service"
     build:
       context: ./back-end-service/
-      dockerfile: DockerFile
+      dockerfile: Dockerfile
     command: java -jar back-end-service-0.0.1-SNAPSHOT.jar
     ports:
       - "8080:8080"
   client:
+    image: "sauvejeanluc/ebilling-front-end-service"
     build:
       context: ./front-end-service/
-      dockerfile: DockerFile
+      dockerfile: Dockerfile
     command: npm start
     volumes:
       - ./front-end-service/:/usr/app
