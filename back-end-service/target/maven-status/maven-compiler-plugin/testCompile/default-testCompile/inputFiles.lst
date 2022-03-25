@@ -1,0 +1,13 @@
+/home/sauve/Documents/Class Docs/Dev-Ops/CAT/back-end-service/src/test/java/com/electricity/seller/payload/LoadElectricityResponseTest.java
+/home/sauve/Documents/Class Docs/Dev-Ops/CAT/back-end-service/src/test/java/com/electricity/seller/repository/TokenRepositoryTest.java
+/home/sauve/Documents/Class Docs/Dev-Ops/CAT/back-end-service/src/test/java/com/electricity/seller/dtos/GetRemainingDaysDTOTest.java
+/home/sauve/Documents/Class Docs/Dev-Ops/CAT/back-end-service/src/test/java/com/electricity/seller/services/TokenServiceTest.java
+/home/sauve/Documents/Class Docs/Dev-Ops/CAT/back-end-service/src/test/java/com/electricity/seller/utils/APICustomResponseTest.java
+/home/sauve/Documents/Class Docs/Dev-Ops/CAT/back-end-service/src/test/java/com/electricity/seller/exceptions/CustomExceptionTest.java
+/home/sauve/Documents/Class Docs/Dev-Ops/CAT/back-end-service/src/test/java/com/electricity/seller/dtos/BuyElectricityDTOTest.java
+/home/sauve/Documents/Class Docs/Dev-Ops/CAT/back-end-service/src/test/java/com/electricity/seller/enums/ETokenStatusTest.java
+/home/sauve/Documents/Class Docs/Dev-Ops/CAT/back-end-service/src/test/java/com/electricity/seller/repository/MeterRepositoryTest.java
+/home/sauve/Documents/Class Docs/Dev-Ops/CAT/back-end-service/src/test/java/com/electricity/seller/BackEndServiceApplicationTests.java
+/home/sauve/Documents/Class Docs/Dev-Ops/CAT/back-end-service/src/test/java/com/electricity/seller/models/TokenTest.java
+/home/sauve/Documents/Class Docs/Dev-Ops/CAT/back-end-service/src/test/java/com/electricity/seller/dtos/LoadElectricityDTOTest.java
+/home/sauve/Documents/Class Docs/Dev-Ops/CAT/back-end-service/src/test/java/com/electricity/seller/models/MeterTest.java
