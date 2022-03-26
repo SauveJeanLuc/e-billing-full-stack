@@ -1,0 +1,35 @@
+version: '2'
+services:
+  server:
+    image: "sauvejeanluc/ebilling-back-end-service"
+    build:
+      context: ./back-end-service/
+      dockerfile: Dockerfile
+    command: java -jar back-end-service-0.0.1-SNAPSHOT.jar
+    ports:
+      - "8080:8080"
+  client:
+    image: "sauvejeanluc/ebilling-front-end-service"
+    build:
+      context: ./front-end-service/
+      dockerfile: Dockerfile
+    command: npm start
+    volumes:
+      - ./front-end-service/:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      - server
+    ports:
+      - "3002:3000"
+  nginx:
+    image: "sauvejeanluc/ebilling-nginx"
+    stdin_open: true
+    tty: true
+    build:
+      context: ./ngnix-config
+      dockerfile: Dockerfile
+    container_name: nginx
+    ports:
+      - "81:80"
+    depends_on:
+      - client
